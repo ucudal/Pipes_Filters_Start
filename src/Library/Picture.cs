@@ -11,6 +11,7 @@ namespace CompAndDel
     /// </summary>
     public class Picture : IPicture
     {
+        public String path { get; set; }
         private Color[,] colorsMatrix;
 
         /// <summary>

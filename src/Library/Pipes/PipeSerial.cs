@@ -41,7 +41,10 @@ namespace CompAndDel.Pipes
         /// <param name="picture">Imagen a la cual se debe aplicar el filtro</param>
         public IPicture Send(IPicture picture)
         {
+            //Twitterpubl subiratwitter = new Twitterpubl();
             picture = this.filtro.Filter(picture);
+            //guardarimagen.GuardarImagen(picture,path);
+            //subiratwitter.SendTwitter(path);
             return this.nextPipe.Send(picture);
         }
     }

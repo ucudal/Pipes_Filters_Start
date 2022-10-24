@@ -29,10 +29,21 @@ namespace CompAndDel.Pipes
         /// y envía la original por una cañería y el duplicado por otra.
         /// </summary>
         /// <param name="picture">imagen a filtrar y enviar a las siguientes cañerías</param>
+
+        //Estoy preguntando si la imagen recibida tiene una cara, si tiene una imagen la envía a un cierto Pipe sino la envía a otro. 
         public IPicture Send(IPicture picture)
         {
-            next2Pipe.Send(picture.Clone());
-            return this.nextPipe.Send(picture);
+            Guardar path = new Guardar();
+            var path1 = path.GeneratePath();
+            CognitiveConditional cognitive = new CognitiveConditional();
+            if (cognitive.FoundFace(path1))
+            {
+                return this.next2Pipe.Send(picture);
+            }
+            else
+            {
+                return this.nextPipe.Send(picture);
+            }
         }
     }
 }

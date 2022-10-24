@@ -8,7 +8,9 @@ namespace CompAndDel
     /// Esta clase permite leer y guardar imágenes desde archivos.
     /// </summary>
     public class PictureProvider
+
     {
+        public string Path {get;set;}
         /// <summary>
         /// Lee una imagen desde un archivo.
         /// </summary>
@@ -16,6 +18,7 @@ namespace CompAndDel
         /// <returns>La imagen leida.</returns>
         public IPicture GetPicture(string path)
         {
+            this.Path=path;
             Picture picture = new Picture(1, 1);
             using (var image = Image.Load<Rgba32>(path))
             {
